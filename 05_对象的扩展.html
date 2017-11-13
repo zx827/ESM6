@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的扩展</title>
+</head>
+<body>
+    <script>
+        //属性的简洁表示法；
+        let username="ppp";
+        let userage=20;
+        let user={
+            username:username,
+            userage:userage
+        };
+        console.log(user);
+
+        let users={
+            username,//属性名和属性值一样时，可以简化只写属性名
+            userage,
+            sleep(){//function可以省略不写
+                console.log("sleep");
+            },
+            student(name){
+                console.log(name+"是谁");
+            }
+        };
+        console.log(users);
+        users.sleep();
+        users.student("小明");
+    </script>
+</body>
+</html>

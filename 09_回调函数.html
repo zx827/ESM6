@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回调函数</title>
+</head>
+<body>
+    <script>
+        let msg;
+        function fn01(callback){
+            setTimeout(function(){
+                msg="hello";
+                console.log("run");
+                callback();
+            });
+        }
+        function fn02(){
+            console.log(msg);
+        }
+        fn01(fn02);
+
+        //没有callback的时候
+        //fn01();fn02()
+        //undefined run
+        //setTimeout()和setInterval()是异步函数
+
+
+
+    </script>
+</body>
+</html>

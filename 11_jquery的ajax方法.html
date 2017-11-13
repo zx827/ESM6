@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/jquery-1.11.1.js"></script>
+</head>
+<body>
+<!--yao    123-->
+    <input type="text" id="u">
+    <input type="password" id="p">
+    <button id="btn">登录</button>
+    <script>
+        $("#btn").click(function(){
+            $.post("http://localhost:3000",{username:$("#u").val(),password:$("#p").val()})
+                .then(function(res){
+                    console.log(res);
+                },function(err){
+                    console.log(err);
+                });
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Map数据结构</title>
+</head>
+<body>
+    <script>
+        let m=new Map();//创建一个空的Map对象
+        m.set("name","张三");//为对象添加成员
+        m.set("age",10);
+        m.set("name","张五");//不允许重复键名，后面的会覆盖前面的；
+        console.log(m);
+
+        //根据key查找值
+        console.log(m.get("name"));
+
+        //找出所有的key
+        console.log(m.keys());//MapIterator {"name", "age"}
+
+        //遍历所有的key
+        for(let i of m.keys()){
+            console.log(i);
+        }
+
+        //找出所有的值
+        console.log(m.values());//MapIterator {"张五", 0}
+
+        //遍历所有的值
+        for(let i of m.values()){
+            console.log(i);
+        }
+
+        //遍历每个元素key:value
+        m.forEach((v,k)=>console.log(k,v));
+
+        //遍历所有的元素（用entries）；
+        console.log(m.entries());
+
+        for(let i of m.entries()){
+            console.log(i);
+        }
+
+        for(let i of m){
+           console.log(i);
+        }
+
+        //传参
+        let m2=new Map([["name","张一"],["age",200]]);
+        console.log(m2);
+    </script>
+</body>
+</html>

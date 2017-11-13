@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数的扩展</title>
+</head>
+<body>
+    <script>
+        //默认值传参
+        function test(x=2,y=3){
+            console.log(x+y);
+        }
+        test(undefined,10);
+
+        //rest参数  ...
+        //...n之后不能再有参数
+        function test1(m,...n){
+            let sum=0;
+            for(let i in n){
+                //console.log(i);//索引号
+                sum+=n[i];
+            }
+            console.log(m+sum);
+        }
+        test1("张三",1,2,3,4,5);
+
+        //箭头函数
+        let fn=()=>x=1;
+        console.log(fn());
+
+        let fn1=(x)=>x+5;
+        console.log(fn1(5));
+
+        let fn2=(x=2,y)=>x+y;
+        console.log(fn2(undefined,10));//想给第二个传参，第一个不能为空，要给个undefined
+
+        let fn3=(x)=>({name:"张一",age:x});//返回值只是一个对象，要用（）括起来。
+        console.log(fn3(2));
+
+        let fn4=()=>{
+            console.log("hi");
+            console.log("你好");
+            return {name:"张二",age:22}//代码块中有多条语句，对象不用用（）括起；
+        };
+        console.log(fn4());
+
+        let fn5=(x)=>{
+            let a=10;
+            let b=20;
+            let c=a+b;
+            let d=x;
+            console.log(d);
+            return c;//代码块中有多条语句，return,不能省略；
+        };
+        console.log(fn5(50));
+    </script>
+</body>
+</html>

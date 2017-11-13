@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>var和let的区别</title>
+</head>
+<body>
+    <script>
+        /*
+            ES5:没有块级作用域，有变量提升，用var声明变量，只有全局和局部
+                能重新定义，
+
+            ES6:有块级作用域，没有变量提升，不能重新定义
+                （1）：let命令，只在let命令所在的代码块内有效即{}中
+                （2）：const命令，用于声明只读的常量，常量名经常大写
+        */
+
+    //ES5用var声明变量
+        //console.log(a);//变量提升  undefined
+        var a=10;
+       // var a=20;
+        //console.log(a); //输出20
+        console.log(window.a);//输出
+        function fn1(){
+            var a=20;
+            if(a>10){
+                console.log(a);
+            }
+        }
+        fn1();
+
+    //ES6用let声明变量,const声明只读的常量
+       // console.log(b);//没有变量提升   error报错
+        let b=20;
+        //let b=30;//error 不能重新定义，可以重新赋值
+         b=30;
+        console.log(b);
+        console.log(window.b);//undefined
+        function fn2(){
+            let b=20;
+            if(b>10){
+                let b1=30;
+                const M=50;
+                console.log(b);
+                console.log(M);//只可以在if{}中访问
+            }
+
+            //console.log(b1); // error 报错,
+            //因为b1在if{}中声明的，作用域只在所在的代码块内有效
+        }
+        fn2();
+
+    //const声明只读的变量
+        //基本类型
+        const PI=3.14;
+        console.log(PI*5);
+        //PI=5;//error
+
+        //引用类型
+        const ARR=[21,22,23];
+        ARR[1]=88;
+        console.log(ARR);//[21,88,23]
+
+        const AR=Object.freeze([26,27,28]);//冻结内容，不能修改
+        AR[1]=89;
+        console.log(AR);//[26,27,28]
+
+        const USER={name:"aaa",age:20};
+        USER.age=30;
+        console.log(USER);
+
+        const USERR=Object.freeze({name:"bbb",age:21});//冻结内容，不能修改
+        USERR.age=30;
+        console.log(USERR);
+
+    </script>
+</body>
+</html>

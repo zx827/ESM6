@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class语法</title>
+</head>
+<body>
+    <script>
+        class Person{
+            //constructor构造器
+            constructor(name,age,address){
+                this.name=name;
+                this.age=age;
+                this.address=address;
+            }
+            //sleep:function(){};
+            sleep(){
+                console.log(this.name+"is sleep....");
+            }
+        }
+
+        //new 的时候会调用这个类的构造函数
+        let p=new Person("张三",20,"瑞达路");
+        p.sleep();
+
+        //继承
+        class Student extends Person{
+            constructor(name,age,address,no){
+                super(name,age,address);
+                this.no=no;
+            }
+            study(){
+                console.log(this.name+"is studing...");
+            }
+        }
+        let s1=new Student("张三",21,"郑州","1001");
+        s1.sleep();
+        s1.study();
+    </script>
+    <script>
+        //创建人对象
+        function Preson(name,age){
+            this.name=name;
+            this.age=age
+        }
+        Preson.prototype.say=function(){
+            console.log("speaking");
+        };
+
+        var p1=new Preson("张三",30);
+        p1.say();
+
+        //创建一个学生对象,继承人的内容
+        function Student(name,age,no){
+            Preson.call(this,name,age);//对象冒充
+            this.no=no
+        }
+        Student.prototype.study=function(){
+            console.log("studing");
+        };
+
+        //遍历人对象的原型，取出人对象的内容，并且放到人对象的原型中
+        for(var i in Preson.prototype){
+            Student.prototype[i]=Preson.prototype[i];
+        }
+
+        var s1=new Student("高雅",20,1001);
+        s1.study();
+        s1.say();
+
+    </script>
+</body>
+</html>

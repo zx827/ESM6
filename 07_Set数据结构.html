@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Set数据结构</title>
+</head>
+<body>
+    <script>
+        let s=new Set();//创建一个空的数据集合
+        s.add(1).add(1).add(2);//add()方法支持连缀，会自动过滤相同的元素。
+        s.add(3);
+        console.log(s);
+
+        //可以将数组作为初始值添加到Set中  (ESM6数组去重的方法)
+        let s2=new Set([4,5,6,4]);
+        //console.log(s2);//输出不是数组格式的了，
+        let arr=Array.from(s2);//将集合转化为数组
+        console.log(arr);//[4,5,6]
+
+        //遍历Set集合
+        for(let i of s2){
+            console.log(i);//4,5,6
+        }
+
+        s2.forEach(function(i){  //ESM5写法
+            console.log(i);
+        });
+
+        s2.forEach((i)=>console.log(i));  //ESM6写法
+    </script>
+</body>
+</html>

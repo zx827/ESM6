@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组去重复</title>
+</head>
+<body>
+    <script>
+    /*数组去重复的*/
+        //for循环的方法；
+       /* let arr=[1,2,1,4,3,2];
+        let fn=(arr)=>{
+            let result=[];//定义一个新数组保存数组let
+            for(let i in arr){
+                let flag=true;
+                for(let j=i;j<arr.length;j++){
+                    if(arr[i]==arr[j+1]){
+                        flag=false;
+                        break;
+                    }
+                }
+                if(flag){
+                    result.push(arr[i]);
+                }
+            }
+            return result;
+        };
+        console.log(fn(arr));*/
+
+        //简便方法，使用对象的方法；
+       /* let temp=[1,2,1,4,3,2];
+        let fn=(arr)=>{
+            let arr1=[];
+            let obj={};
+            for(let i in arr){
+                //console.log(obj[arr[i]]);
+              if(!obj[arr[i]]){
+                  arr1.push(arr[i]);
+                  obj[arr[i]]=1;
+              }
+            }
+            return arr1;
+        };
+        console.log(fn(temp));*/
+
+   //随机产生100个0-9之间的整数统计出现的概率
+        let arr=[];
+        for(let i=0;i<100;i++){
+            let s=parseInt(Math.random()*10);
+            arr.push(s);
+            arr.sort(function(x,y){
+                if(x<y){
+                    return -1;
+                }else{
+                    return 1;
+                }
+            });
+        }
+
+        let count=1;//默认次数为1次；
+        let obj={};
+        let c=arr[0];
+        //用当前字符和后面的元素作比较
+        for(let i=1;i<arr.length;i++){
+            //相等，出现重复元素
+            if(arr[i]==c){
+                count++;
+            }else{
+                //arr0.push(count);
+                obj[arr[i-1]]=count;
+                count=1;//恢复计数器
+                c=arr[i];
+            }
+        }
+        console.log(arr,obj);
+
+    </script>
+</body>
+</html>

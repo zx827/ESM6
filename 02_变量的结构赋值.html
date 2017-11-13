@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量的结构赋值</title>
+</head>
+<body>
+<script>
+    //从数组中取值
+    let [x,y,z]=[2,3,4];
+    console.log(x,y,z);
+
+    let[a,[b,c]]=[5,[6,7]];
+    console.log(a,b,c);
+
+    let[d,e]=[8];
+    console.log(d,e);//d=8 e是undefined
+
+    let[,f]=[,9];
+    console.log(f);
+
+    let[m,...n]=[10,11,12,13,14];
+    console.log(m,n);//m=10 n=[11,12,13,14]
+
+    let[g=15]=[];
+    console.log(g);//g=15
+
+    let[g1=16]=[17];
+    console.log(g1);//g1=17
+
+    //从数组中提取对象
+    let{name,age}={name:"aaa",age:18};
+    console.log(name,age);
+
+    let{name:username,age:userage}={age:19,name:"张三"};
+    console.log(username,userage);
+
+</script>
+</body>
+</html>

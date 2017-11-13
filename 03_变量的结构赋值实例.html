@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>变量的结构赋值实例</title>
+</head>
+<body>
+    <script>
+    //交换变量的值
+        let x=5;
+        let y=10;
+        console.log(x,y);//5,10
+        [x,y]=[y,x];
+        console.log(x,y);//10,5
+
+    //从函数中返回多个值
+        function test(){
+            return [1,2,3,4]
+        }
+        let[a,b,c,d]=test();
+        console.log(a,b,c,d);//1,2,3,4
+
+        function test1(){
+            return {name:"张三",age:20}
+        }
+        let{name:username,age:userage}=test1();
+        console.log(username,userage);
+
+    //函数参数的定义（传参数的时候不用按顺序）
+        function test2({url,data}){
+            console.log(url,data);
+        }
+        test2({data:{name:"张四",age:21 },url:"baidu.com"});
+
+        function test3({url="taobao.com",data}){
+            console.log(url,data);
+        }
+        test3({data:{name:"张五",age:22}})
+
+     //提取JSON数据
+        let preson={
+            no:1001,
+            name:"张六",
+            score:[100,89,80]
+        };
+        console.log(preson);
+        let{no:myNo,name:myName,score:myScore}=preson;
+        console.log(myNo,myName,myScore);
+    </script>
+</body>
+</html>
